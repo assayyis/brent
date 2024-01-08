@@ -1,10 +1,8 @@
 package com.ibnu.brent.controller;
 
-import com.ibnu.brent.dto.request.IssueDetailRequest;
 import com.ibnu.brent.dto.request.IssueRequest;
 import com.ibnu.brent.dto.response.IssueResponse;
 import com.ibnu.brent.dto.response.TotalRevenueResponse;
-import com.ibnu.brent.entity.Issue;
 import com.ibnu.brent.mapper.IssueMapper;
 import com.ibnu.brent.service.IssueService;
 import lombok.RequiredArgsConstructor;
