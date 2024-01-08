@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("api/users")
 public class UserController {
-
     public void updateUser(String userId) {
 
     }

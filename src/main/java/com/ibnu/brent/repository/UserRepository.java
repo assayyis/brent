@@ -6,6 +6,8 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Transactional
 public class UserRepository {
@@ -19,5 +21,12 @@ public class UserRepository {
         } else {
             return entityManager.merge(user);
         }
+    }
+
+    public User findById(String id) {
+        List<User> users = entityManager.createNativeQuery("SELECT * FROM m_user WHERE id = ?", User.class)
+                .setParameter(1, id)
+                .getResultList();
+        return users.isEmpty() ? null : users.get(0);
     }
 }

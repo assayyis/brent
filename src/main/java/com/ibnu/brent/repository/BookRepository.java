@@ -1,10 +1,7 @@
 package com.ibnu.brent.repository;
 
-import com.ibnu.brent.constant.EBookStatus;
 import com.ibnu.brent.entity.Book;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
@@ -12,13 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.UUID;
 
-//List<Book> findAll();
-//List<Book> findByName(String name);
-//Book findById(String id);
-//
-//Book create(Book book);
-//Book update(Book book);
-//void delete(String id);
 @Repository
 @Transactional
 public class BookRepository {

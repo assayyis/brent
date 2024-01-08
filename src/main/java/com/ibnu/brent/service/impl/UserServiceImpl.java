@@ -1,8 +1,10 @@
 package com.ibnu.brent.service.impl;
 
 import com.ibnu.brent.entity.AppUser;
+import com.ibnu.brent.entity.User;
 import com.ibnu.brent.entity.UserCredential;
 import com.ibnu.brent.repository.UserCredentialRepository;
+import com.ibnu.brent.repository.UserRepository;
 import com.ibnu.brent.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserCredentialRepository userCredentialRepository;
+    private final UserRepository userRepository;
 
     @Override
     public AppUser loadUserByUserId(String id) {
@@ -23,6 +26,11 @@ public class UserServiceImpl implements UserService {
                 userCredential.getUsername(),
                 userCredential.getPassword(),
                 userCredential.getRole().getName());
+    }
+
+    @Override
+    public User getUserByUserId(String id) {
+        return userRepository.findById(id);
     }
 
     @Override
