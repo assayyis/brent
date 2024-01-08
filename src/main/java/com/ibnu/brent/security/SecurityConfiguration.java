@@ -21,7 +21,7 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class SecurityConfiguration {
     private final AuthTokenFilter authTokenFilter;
 
-    public static final String[] WHITELIST_URL = {"api/**"};
+    public static final String[] WHITELIST_URL = {"api/**", "**"};
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {

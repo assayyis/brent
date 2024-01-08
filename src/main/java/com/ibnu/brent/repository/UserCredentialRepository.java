@@ -1,14 +1,9 @@
 package com.ibnu.brent.repository;
 
-import com.ibnu.brent.entity.Role;
 import com.ibnu.brent.entity.UserCredential;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -41,9 +36,4 @@ public class UserCredentialRepository {
                 .stream()
                 .findFirst();
     }
-
-//    Optional<UserCredential> findByUsername(String username);
-//
-//    @Query(value = "SELECT * FROM user_credentials WHERE username = :username", nativeQuery = true)
-//    Optional<UserCredential> findByUsernameNativeQuery(@Param("username") String username);
 }
