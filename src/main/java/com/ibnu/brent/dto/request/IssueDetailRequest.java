@@ -1,4 +1,4 @@
-package com.ibnu.brent.dto.response;
+package com.ibnu.brent.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder = true)
-public class CommonResponse<T> {
-    private Integer statusCode;
-    private String message;
-    private T data;
+public class IssueDetailRequest {
+    private String bookId;
 }
