@@ -3,10 +3,13 @@ package com.ibnu.brent.controller;
 import com.ibnu.brent.constant.ERole;
 import com.ibnu.brent.dto.request.LoginRequest;
 import com.ibnu.brent.dto.request.RegisterRequest;
+import com.ibnu.brent.dto.response.CommonResponse;
 import com.ibnu.brent.dto.response.LoginResponse;
 import com.ibnu.brent.dto.response.RegisterResponse;
 import com.ibnu.brent.service.AuthService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,24 +22,39 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/register")
-    public RegisterResponse registerCustomer(@RequestBody RegisterRequest registerRequest) {
-        return authService.register(registerRequest, ERole.ROLE_CUSTOMER);
-//        return ResponseEntity
-//                .status(HttpStatus.CREATED)
-//                .body(CommonResponse.<RegisterResponse>builder()
-//                        .statusCode(HttpStatus.CREATED.value())
-//                        .message("Success register")
-//                        .data(registerResponse)
-//                        .build());
+    public ResponseEntity<?> registerCustomer(@RequestBody RegisterRequest registerRequest) {
+        var registerResponse = authService.register(registerRequest, ERole.ROLE_CUSTOMER);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(CommonResponse.<RegisterResponse>builder()
+                        .statusCode(HttpStatus.CREATED.value())
+                        .message("Register Success")
+                        .data(registerResponse)
+                        .build());
     }
     @PostMapping("/register-admin")
-    public RegisterResponse registerAdmin(@RequestBody RegisterRequest registerRequest) {
-        return authService.register(registerRequest, ERole.ROLE_ADMIN);
+    public ResponseEntity<?> registerAdmin(@RequestBody RegisterRequest registerRequest) {
+        var registerResponse = authService.register(registerRequest, ERole.ROLE_ADMIN);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(CommonResponse.<RegisterResponse>builder()
+                        .statusCode(HttpStatus.CREATED.value())
+                        .message("Register Success")
+                        .data(registerResponse)
+                        .build());
     }
 
     @PostMapping("/login")
-    public LoginResponse login(@RequestBody LoginRequest loginRequest) {
-        return authService.login(loginRequest);
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+        var loginResponse = authService.login(loginRequest);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(CommonResponse.<LoginResponse>builder()
+                        .statusCode(HttpStatus.OK.value())
+                        .message("Login Success")
+                        .data(loginResponse)
+                        .build());
+
     }
 
 }
